@@ -297,9 +297,66 @@ button {
 .event-image {
   display: block;
   width: 100%;
-  max-height: 430px;
+  max-height: 390px;
   object-fit: contain;
   background: radial-gradient(circle at top, rgba(255, 248, 235, 0.92), rgba(229, 220, 201, 0.72));
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(8, 18, 16, 0.52);
+  backdrop-filter: blur(8px);
+}
+
+.guide-modal {
+  width: min(980px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.guide-grid,
+.framework-grid,
+.guide-stats {
+  display: grid;
+  gap: 14px;
+}
+
+.guide-grid,
+.framework-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.guide-stats {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.guide-stats div,
+.framework-grid div {
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.guide-stats strong,
+.framework-grid strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.guide-stats span,
+.framework-grid span {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.inline-button {
+  margin-top: 10px;
 }
 
 .choices-grid,
@@ -498,7 +555,10 @@ button {
   .ethics-grid,
   .intro-grid,
   .outcome-layout,
-  .ending-panels {
+  .ending-panels,
+  .guide-grid,
+  .framework-grid,
+  .guide-stats {
     grid-template-columns: 1fr;
   }
 }
@@ -531,5 +591,9 @@ button {
 
   .ending-stats {
     grid-template-columns: 1fr;
+  }
+
+  .event-image {
+    max-height: 300px;
   }
 }

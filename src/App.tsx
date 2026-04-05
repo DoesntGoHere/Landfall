@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { AdvisorPanel } from './components/AdvisorPanel';
 import { EndingSummary } from './components/EndingSummary';
 import { EventCard } from './components/EventCard';
+import { GuideModal } from './components/GuideModal';
 import { OutcomePanel } from './components/OutcomePanel';
 import { StatDisplay } from './components/StatDisplay';
 import { endingProfiles, events, initialStats } from './data/gameData';
@@ -39,6 +40,7 @@ interface GameSnapshot {
 }
 
 const SAVE_KEY = 'landfall-save-v2';
+const GUIDE_KEY = 'landfall-guide-seen-v1';
 const TOTAL_TURNS = 10;
 const emptyPhilosophy: PhilosophyLedger = {
   anthropocentrism: 0,
@@ -70,7 +72,14 @@ function inferEnding(stats: Stats, philosophy: PhilosophyLedger) {
     return endingProfiles.find((entry) => entry.key === 'pragmatic-developer')!;
   }
 
-  if (civicStrength > 56 && stats.economy > 50 && stats.support > 48 && stats.sustainability >= 50) {
+  if (
+    civicStrength > 61 &&
+    stats.economy > 53 &&
+    stats.support > 52 &&
+    stats.sustainability >= 52 &&
+    philosophy.anthropocentrism >= philosophy.biocentrism &&
+    philosophy.anthropocentrism >= philosophy.ecocentrism
+  ) {
     return endingProfiles.find((entry) => entry.key === 'human-centered-reformer')!;
   }
 
@@ -128,6 +137,7 @@ function loadSnapshot() {
 export default function App() {
   const [game, setGame] = useState<GameSnapshot | null>(null);
   const [hasSave, setHasSave] = useState(false);
+  const [guideOpen, setGuideOpen] = useState(false);
 
   useEffect(() => {
     const snapshot = loadSnapshot();
@@ -167,7 +177,13 @@ export default function App() {
 
   const phase: Phase = game?.phase ?? 'title';
 
-  const startNewGame = () => setGame(buildNewGame());
+  const startNewGame = () => {
+    setGame(buildNewGame());
+    if (!window.localStorage.getItem(GUIDE_KEY)) {
+      setGuideOpen(true);
+      window.localStorage.setItem(GUIDE_KEY, 'seen');
+    }
+  };
 
   const continueSavedGame = () => {
     const snapshot = loadSnapshot();
@@ -266,6 +282,7 @@ export default function App() {
           </div>
           <div className="topbar-meta">
             {game ? <span>{Math.min(game.turn + (phase === 'result' ? 1 : 0), game.totalTurns)} / {game.totalTurns} turns</span> : <span>10-turn campaign</span>}
+            <button className="ghost-button topbar-button" onClick={() => setGuideOpen(true)}>Guide</button>
             {game ? <button className="ghost-button topbar-button" onClick={toggleAmbient}>{game.ambientEnabled ? 'Ambient on' : 'Ambient off'}</button> : null}
             {game ? <button className="ghost-button topbar-button" onClick={saveAndQuit}>Save & quit</button> : null}
           </div>
@@ -329,6 +346,9 @@ export default function App() {
                   This campaign now runs as a shuffled policy docket. Some later dilemmas will shift in tone depending
                   on what you protected, what you accelerated, and which risks you asked the future to absorb.
                 </p>
+                <p>
+                  Your first useful rule of thumb: rising `Economy` or `Support` can still hide a worsening long-term trajectory if `Legal Risk` climbs or ecological systems start to hollow out.
+                </p>
                 <p>{climate}</p>
               </div>
             </div>
@@ -374,6 +394,16 @@ export default function App() {
             onRestart={restart}
           />
         )}
+
+        <GuideModal
+          open={guideOpen}
+          onClose={() => setGuideOpen(false)}
+          ambientEnabled={game?.ambientEnabled ?? false}
+          onToggleAmbient={() => {
+            if (!game) return;
+            toggleAmbient();
+          }}
+        />
       </main>
     </div>
   );

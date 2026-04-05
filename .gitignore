@@ -6,3 +6,4 @@ vite.config.d.ts
 .devserver-job
 devserver.log
 playtest-*.png
+.vercel
