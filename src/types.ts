@@ -65,6 +65,7 @@ export interface GameEvent {
   id: string;
   chapter: string;
   stage: EventStage;
+  imagePath: string;
   title: string;
   setting: string;
   scenario: string;

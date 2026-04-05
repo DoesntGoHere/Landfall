@@ -1,4 +1,4 @@
-import { Advisor, EndingProfile, GameEvent, StatKey, Stats } from '../types';
+Ôªøimport { Advisor, EndingProfile, GameEvent, StatKey, Stats } from '../types';
 
 export const statMeta: { key: StatKey; label: string; tint: string }[] = [
   { key: 'biodiversity', label: 'Biodiversity', tint: 'var(--moss)' },
@@ -31,6 +31,7 @@ export const events: GameEvent[] = [
     id: 'wetlands-mining',
     chapter: 'Council Dossier',
     stage: 'early',
+    imagePath: '/images/scenarios/flamingo-wetland.png',
     title: 'Lithium Beneath the Flamingo Marsh',
     setting: 'Southern salt wetlands',
     scenario: "A multinational firm wants lithium beneath Landfall's flamingo wetlands. The deposit could fund jobs and grid upgrades, but extraction would fragment breeding flats and alter the marsh's salinity.",
@@ -91,7 +92,7 @@ export const events: GameEvent[] = [
           ethicalAnalysis: [
             { framework: 'Anthropocentrism', standing: 'Human welfare including long-term fishery stability, storm buffering, and regional identity.', judgment: 'Morally conflicted', analysis: 'The decision sacrifices immediate investment, but it protects ecological services and cultural value that communities may depend on for decades.' },
             { framework: 'Biocentrism', standing: 'Flamingos, fish, invertebrates, and all wetland life as morally considerable in themselves.', judgment: 'Supported', analysis: 'The marsh is not used as a sacrificial zone for a worthy cause; its living inhabitants are allowed continued room to exist.' },
-            { framework: 'Ecocentrism', standing: 'The wetland as a patterned whole of tides, salinity, sediments, and life.', judgment: 'Supported', analysis: 'The decision recognizes that once a wetlandís organizing relationships are broken, mitigation rarely restores the original community.' },
+            { framework: 'Ecocentrism', standing: 'The wetland as a patterned whole of tides, salinity, sediments, and life.', judgment: 'Supported', analysis: 'The decision recognizes that once a wetland‚Äôs organizing relationships are broken, mitigation rarely restores the original community.' },
           ],
         },
       },
@@ -101,6 +102,7 @@ export const events: GameEvent[] = [
     id: 'forest-expansion',
     chapter: 'Council Dossier',
     stage: 'early',
+    imagePath: '/images/scenarios/forest-town-factory.png',
     title: 'Factory Jobs at the Old-Growth Edge',
     setting: 'North Ridge timber belt',
     scenario: "A manufacturing consortium offers to expand beside one of Landfall's last old-growth forests. The host town needs jobs. The forest stores carbon, shelters owls and amphibians, and anchors a watershed already under stress.",
@@ -171,6 +173,7 @@ export const events: GameEvent[] = [
     id: 'drought-diversion',
     chapter: 'Council Dossier',
     stage: 'early',
+    imagePath: '/images/scenarios/drought-river-valley.png',
     title: 'River Water in a Dry Year',
     setting: 'Central valley irrigation corridor',
     scenario: 'A severe drought drops river flows to emergency levels. Farmers want diversions to save orchards and seasonal crops, while biologists warn that low flows will collapse spawning habitat and strand juvenile fish in warming side channels.',
@@ -241,6 +244,7 @@ export const events: GameEvent[] = [
     id: 'runoff-bloom',
     chapter: 'Council Dossier',
     stage: 'early',
+    imagePath: '/images/scenarios/algal-bloom-estuary.png',
     title: 'Green Fields, Red Tide',
     setting: 'Estuary and delta farms',
     scenario: 'Heavy fertilizer runoff has triggered algal blooms in the estuary, collapsing oxygen levels and hammering fisheries. Farm cooperatives insist tighter nutrient rules would cripple already thin margins.',
@@ -311,6 +315,7 @@ export const events: GameEvent[] = [
     id: 'storm-retreat',
     chapter: 'Council Dossier',
     stage: 'mid',
+    imagePath: '/images/scenarios/storm-ravaged-coast.png',
     title: 'After the Blackwater Storm',
     setting: 'Low-lying coastal settlements',
     scenario: 'A once-in-a-generation storm tears through the coast, destroying homes, roads, and dunes. Residents want immediate rebuilding support. Climate analysts warn that rebuilding in place will deepen future losses.',
@@ -352,7 +357,7 @@ export const events: GameEvent[] = [
           philosophy: { anthropocentrism: 1, biocentrism: 2, ecocentrism: 4, legalism: 3 },
           ethicalAnalysis: [
             { framework: 'Anthropocentrism', standing: 'Human well-being understood over decades, not just this season.', judgment: 'Morally conflicted', analysis: 'Retreat disrupts communities now, but it may better protect safety, solvency, and dignity over time.' },
-            { framework: 'Biocentrism', standing: 'Coastal life displaced by hard infrastructure and recurring disturbance.', judgment: 'Supported', analysis: 'The coast is not continually reorganized around a single speciesí insistence on holding ground.' },
+            { framework: 'Biocentrism', standing: 'Coastal life displaced by hard infrastructure and recurring disturbance.', judgment: 'Supported', analysis: 'The coast is not continually reorganized around a single species‚Äô insistence on holding ground.' },
             { framework: 'Ecocentrism', standing: 'The shoreline as a living, moving system.', judgment: 'Supported', analysis: 'Managed retreat accepts that resilience sometimes means ceding space rather than intensifying control.' },
           ],
         },
@@ -381,6 +386,7 @@ export const events: GameEvent[] = [
     id: 'wildfire-salvage',
     chapter: 'Council Dossier',
     stage: 'mid',
+    imagePath: '/images/scenarios/burned-forest-salvage.png',
     title: 'Smoke Over North Ridge',
     setting: 'Fire-scarred upland forest',
     scenario: 'A lightning complex fire has burned through parts of the North Ridge. Timber interests want emergency salvage logging before burned trunks lose market value. Ecologists warn that post-fire habitat, coarse woody debris, and slope stability matter long after the flames are gone.',
@@ -393,7 +399,7 @@ export const events: GameEvent[] = [
     advisors: [
       { advisorId: 'economy', text: 'A burn scar is one of the few moments when wood can be monetized before decay takes the option away.' },
       { advisorId: 'ecology', text: 'Many species need what fire leaves behind, not what cleanup removes.' },
-      { advisorId: 'community', text: 'People near the slopes worry about mud, smoke, and whether ìrecoveryî means trucks for five years.' },
+      { advisorId: 'community', text: 'People near the slopes worry about mud, smoke, and whether ‚Äúrecovery‚Äù means trucks for five years.' },
     ],
     options: [
       {
@@ -428,7 +434,7 @@ export const events: GameEvent[] = [
           ethicalAnalysis: [
             { framework: 'Anthropocentrism', standing: 'Public safety and local revenue moderated by caution.', judgment: 'Supported', analysis: 'The choice addresses visible human hazards without insisting every burned acre must pay for itself.' },
             { framework: 'Biocentrism', standing: 'Species using post-fire habitat while still facing some disturbance.', judgment: 'Morally conflicted', analysis: 'Life is better protected than under full salvage, though not fully spared renewed intervention.' },
-            { framework: 'Ecocentrism', standing: 'Forest succession and patch-mosaic recovery.', judgment: 'Morally conflicted', analysis: 'The policy respects more of the fireís ecological role, but still reorganizes the landscape where human nerves and roads are involved.' },
+            { framework: 'Ecocentrism', standing: 'Forest succession and patch-mosaic recovery.', judgment: 'Morally conflicted', analysis: 'The policy respects more of the fire‚Äôs ecological role, but still reorganizes the landscape where human nerves and roads are involved.' },
           ],
         },
       },
@@ -439,7 +445,7 @@ export const events: GameEvent[] = [
         outcome: {
           summary: 'The landscape remains visually raw and politically difficult, but snag forests, fungi, cavity nesters, and slope vegetation begin the slower work of real recovery.',
           statChanges: { economy: -3, support: -2, biodiversity: 6, ecosystem: 5, legal: -3, sustainability: 6 },
-          legalNote: 'Exposure drops if hazard zones are still stabilized, though critics frame the policy as paying to ìdo nothing.î',
+          legalNote: 'Exposure drops if hazard zones are still stabilized, though critics frame the policy as paying to ‚Äúdo nothing.‚Äù',
           headline: 'North Ridge Burn Scar Left Largely Intact for Ecological Recovery',
           addTags: ['recovery_first'],
           philosophy: { anthropocentrism: 0, biocentrism: 3, ecocentrism: 4, legalism: 2 },
@@ -456,6 +462,7 @@ export const events: GameEvent[] = [
     id: 'species-infrastructure',
     chapter: 'Council Dossier',
     stage: 'mid',
+    imagePath: '/images/scenarios/marsh-rail-endangered-hare.png',
     title: 'The Rail Spur and the Marsh Hare',
     setting: 'Eastern freight corridor',
     scenario: 'A major freight project would relieve truck congestion across Landfall. Mid-survey, biologists confirm that the last viable breeding pocket of the marsh hare lies directly along the planned route.',
@@ -526,6 +533,7 @@ export const events: GameEvent[] = [
     id: 'tourism-pressure',
     chapter: 'Council Dossier',
     stage: 'mid',
+    imagePath: '/images/scenarios/dune-reserve-tourism.png',
     title: 'The Reserve Everyone Wants to Visit',
     setting: 'Cloud dunes protected landscape',
     scenario: "Landfall's most famous protected ecosystem is becoming a tourism sensation. Visitor revenue is rising, but foot traffic, off-trail photography, and short-term rentals are stressing dunes, nesting sites, and local housing.",
@@ -599,6 +607,7 @@ export const events: GameEvent[] = [
     id: 'waste-incinerator',
     chapter: 'Council Dossier',
     stage: 'mid',
+    imagePath: '/images/scenarios/incinerator-town.png',
     title: 'Waste-to-Energy on the Flats',
     setting: 'South Channel industrial town',
     scenario: 'Landfall is running out of landfill space. A consortium proposes a waste-to-energy incinerator in a low-income industrial town, promising jobs, district heat, and lower methane emissions. Residents fear toxic air, ash disposal, and one more sacrifice zone dressed up as innovation.',
@@ -669,6 +678,7 @@ export const events: GameEvent[] = [
     id: 'chemical-spill',
     chapter: 'Council Dossier',
     stage: 'late',
+    imagePath: '/images/scenarios/chemical-spill-groundwater.png',
     title: 'Groundwater Under the Industrial Flats',
     setting: 'Western manufacturing district',
     scenario: 'A storage failure at a chemical plant has released contaminants toward a shallow aquifer that supplies several towns. The company offers private cleanup, asks to keep the site open, and warns that a shutdown would force layoffs.',
@@ -743,6 +753,7 @@ export const events: GameEvent[] = [
     id: 'desalination-debate',
     chapter: 'Council Dossier',
     stage: 'late',
+    imagePath: '/images/scenarios/desalination-coast.png',
     title: 'Water from the Sea',
     setting: 'Outer coast utility corridor',
     scenario: 'A public-private consortium proposes a desalination plant and intake pipeline to stabilize Landfall\'s water supply. Supporters call it climate adaptation. Critics warn about brine discharge, marine intake mortality, high energy demand, and the way expensive new supply can excuse waste elsewhere.',
@@ -818,6 +829,7 @@ export const events: GameEvent[] = [
     id: 'highway-corridor',
     chapter: 'Council Dossier',
     stage: 'late',
+    imagePath: '/images/scenarios/highway-migration-corridor.png',
     title: 'Highway Through the Migration Belt',
     setting: 'Western foothill corridor',
     scenario: 'Regional planners want a new highway to cut travel time and support logistics expansion. The proposed route slices through a major migration corridor used by elk, wolves, and seasonal pollinators.',
@@ -888,6 +900,7 @@ export const events: GameEvent[] = [
     id: 'offshore-wind',
     chapter: 'Council Dossier',
     stage: 'late',
+    imagePath: '/images/scenarios/offshore-wind-fishing-routes.png',
     title: 'Wind Beyond the Shoals',
     setting: 'Nearshore migration route',
     scenario: 'An offshore wind project could cut fossil generation and create union jobs at the port. Fishers worry about exclusion zones, and seabird researchers warn the array sits near a migration route already stressed by warming waters and shifting prey.',
@@ -895,7 +908,7 @@ export const events: GameEvent[] = [
     advisors: [
       { advisorId: 'economy', text: 'This is one of the few projects that promises jobs, grid value, and national relevance at the same time.' },
       { advisorId: 'species', text: 'Decarbonization matters, but not every green project is automatically gentle.' },
-      { advisorId: 'community', text: 'Fishers hear ìtransitionî and often mean ìsomeone else keeps working.î' },
+      { advisorId: 'community', text: 'Fishers hear ‚Äútransition‚Äù and often mean ‚Äúsomeone else keeps working.‚Äù' },
     ],
     options: [
       {
@@ -958,6 +971,7 @@ export const events: GameEvent[] = [
     id: 'floodplain-restoration',
     chapter: 'Council Dossier',
     stage: 'late',
+    imagePath: '/images/scenarios/floodplain-wetland-restoration.png',
     title: 'The Floodplain That Wants to Be a Floodplain',
     setting: 'Lower river agricultural basin',
     scenario: 'A major restoration proposal would reconnect the river to its historical floodplain, reviving wetlands, bird habitat, and flood buffering. But the land currently supports profitable agriculture and processing jobs.',
@@ -1039,4 +1053,5 @@ export const endingProfiles: EndingProfile[] = [
   { key: 'legally-cautious-administrator', title: 'Legally Cautious Administrator', summary: 'Procedure, defensibility, and institutional durability shaped your rule. You rarely moved fast, but you rarely walked blindfolded either.', reflection: 'You governed with unusual respect for review, evidence, and the consequences of administrative haste. Landfall may not have loved the pace, but it survived more of its shocks.' },
   { key: 'collapse-era-opportunist', title: 'Collapse-Era Opportunist', summary: 'You governed for immediate advantage while ecological and legal debts accumulated beneath the surface.', reflection: 'For a while, Landfall looked decisive. Later, it looked exposed. Your administration borrowed stability from the future and spent it in the present tense.' },
 ];
+
 

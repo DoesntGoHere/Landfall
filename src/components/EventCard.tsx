@@ -8,6 +8,9 @@ interface Props {
 export function EventCard({ event, onChoose }: Props) {
   return (
     <section className="panel event-panel">
+      <div className="event-media">
+        <img src={event.imagePath} alt={event.title} className="event-image" />
+      </div>
       <div className="panel-heading">
         <div>
           <span className="eyebrow">{event.chapter}</span>
