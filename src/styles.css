@@ -1,0 +1,518 @@
+:root {
+  --bg: #102420;
+  --bg-deep: #0b1715;
+  --panel: rgba(246, 241, 229, 0.9);
+  --panel-strong: rgba(250, 247, 239, 0.96);
+  --ink: #182620;
+  --muted: #5a6d65;
+  --border: rgba(28, 49, 43, 0.12);
+  --shadow: 0 24px 80px rgba(5, 18, 15, 0.28);
+  --moss: #2f6a52;
+  --sage: #7e9584;
+  --sea: #3a6473;
+  --fog-blue: #73889a;
+  --amber: #9d7041;
+  --ember: #8b5147;
+  --cream: #f6f1e5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top, rgba(170, 198, 191, 0.18), transparent 24%),
+    linear-gradient(180deg, rgba(11, 23, 21, 0.82), rgba(11, 23, 21, 0.96)),
+    linear-gradient(135deg, #28413b, #162723 50%, #0d1716 100%);
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.stage-panel {
+  animation: rise 320ms ease, soften 420ms ease;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(163, 188, 172, 0.16), transparent 18%),
+    radial-gradient(circle at 80% 20%, rgba(108, 139, 154, 0.14), transparent 22%),
+    radial-gradient(circle at 50% 100%, rgba(255, 244, 222, 0.08), transparent 26%);
+}
+
+.app-frame {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.topbar,
+.panel {
+  backdrop-filter: blur(16px);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  padding: 10px 4px;
+  color: var(--cream);
+}
+
+.topbar h1,
+.hero h2,
+.panel h2,
+.panel h3,
+.panel h4 {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 0.95;
+}
+
+.topbar h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.topbar-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.topbar-meta span,
+.setting-pill {
+  border: 1px solid rgba(246, 241, 229, 0.2);
+  background: rgba(246, 241, 229, 0.08);
+  color: var(--cream);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.topbar-button {
+  padding: 8px 12px;
+  color: var(--cream);
+  border-color: rgba(246, 241, 229, 0.2);
+  background: rgba(246, 241, 229, 0.08);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.topbar .eyebrow,
+.hero .eyebrow {
+  color: rgba(246, 241, 229, 0.75);
+}
+
+.panel {
+  background: linear-gradient(180deg, var(--panel-strong), var(--panel));
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+.compact {
+  padding: 16px 18px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.hero-copy {
+  padding: 10px 4px;
+}
+
+.hero h2 {
+  font-size: clamp(2.3rem, 5vw, 4rem);
+  margin-bottom: 14px;
+}
+
+.hero p,
+.intro-grid p,
+.event-scenario,
+.event-pressure,
+.result-card p,
+.ethics-card p,
+.ending-copy p,
+.turn-banner p {
+  margin: 0 0 12px;
+  line-height: 1.65;
+}
+
+.hero-card,
+.result-card,
+.headline-card,
+.ethics-card,
+.advisor-card,
+.choice-card,
+.stat-card {
+  border-radius: 18px;
+  border: 1px solid var(--border);
+}
+
+.hero-card {
+  height: 100%;
+  padding: 20px;
+  color: var(--cream);
+  background: linear-gradient(160deg, rgba(24, 49, 44, 0.95), rgba(39, 74, 78, 0.82));
+}
+
+.hero-card ul {
+  margin: 16px 0 0;
+  padding-left: 20px;
+  line-height: 1.9;
+}
+
+.primary-button,
+.ghost-button {
+  border-radius: 999px;
+  padding: 12px 18px;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  cursor: pointer;
+}
+
+.button-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.primary-button {
+  border: none;
+  background: linear-gradient(135deg, var(--moss), #3f8065);
+  color: var(--cream);
+  box-shadow: 0 12px 28px rgba(47, 106, 82, 0.28);
+}
+
+.ghost-button {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--ink);
+}
+
+.primary-button:hover,
+.ghost-button:hover,
+.choice-card:hover {
+  transform: translateY(-2px);
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.panel-heading h2 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+}
+
+.panel-heading h3 {
+  font-size: 1.55rem;
+}
+
+.intro-grid,
+.outcome-layout,
+.ending-panels,
+.game-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.intro-grid,
+.outcome-layout,
+.ending-panels {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.game-grid {
+  grid-template-columns: minmax(0, 1.55fr) minmax(310px, 0.85fr);
+  align-items: start;
+}
+
+.main-column,
+.side-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.turn-banner {
+  background: linear-gradient(135deg, rgba(34, 63, 55, 0.9), rgba(67, 90, 99, 0.82));
+  color: var(--cream);
+}
+
+.turn-banner .eyebrow {
+  color: rgba(246, 241, 229, 0.7);
+}
+
+.event-panel,
+.outcome-panel,
+.intro-panel,
+.ending-panel {
+  animation: rise 320ms ease;
+}
+
+.choices-grid,
+.ethics-grid,
+.stat-grid,
+.advisor-list {
+  display: grid;
+  gap: 12px;
+}
+
+.choices-grid,
+.ethics-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.choice-card {
+  text-align: left;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.52);
+  border: 1px solid rgba(29, 50, 44, 0.12);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.choice-card:hover {
+  box-shadow: 0 12px 24px rgba(18, 37, 31, 0.09);
+  border-color: rgba(47, 106, 82, 0.22);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.choice-card strong,
+.stat-topline,
+.ethics-topline,
+.advisor-card strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.choice-card span,
+.advisor-card span,
+.stat-foot,
+.result-card.secondary,
+.headline-card,
+.ethics-card p:last-child {
+  color: var(--muted);
+}
+
+.advisor-list,
+.stat-grid {
+  grid-template-columns: 1fr;
+}
+
+.advisor-card,
+.result-card,
+.headline-card,
+.ethics-card {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.advisor-card div {
+  margin-bottom: 10px;
+}
+
+.advisor-card span {
+  display: block;
+  font-size: 0.9rem;
+}
+
+.stat-card {
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.stat-topline,
+.stat-foot,
+.ethics-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.stat-track {
+  height: 9px;
+  background: rgba(24, 38, 32, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 12px 0 10px;
+}
+
+.stat-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 300ms ease;
+}
+
+.delta {
+  font-weight: 700;
+}
+
+.positive { color: var(--moss); }
+.negative { color: var(--ember); }
+
+.result-card h3,
+.headline-card p,
+.ethics-card h4 {
+  margin: 0 0 10px;
+}
+
+.result-card.secondary,
+.headline-card {
+  background: rgba(243, 237, 225, 0.78);
+}
+
+.headline-card p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  color: var(--ink);
+}
+
+.judgment {
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.supported { background: rgba(47, 106, 82, 0.16); color: var(--moss); }
+.criticized { background: rgba(139, 81, 71, 0.14); color: var(--ember); }
+.morally-conflicted { background: rgba(115, 136, 154, 0.18); color: var(--sea); }
+
+.ending-lead {
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+
+.ending-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ending-stats div {
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.ending-stats span {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.history-list {
+  display: grid;
+  gap: 10px;
+}
+
+.history-list div {
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.history-list span {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soften {
+  from {
+    filter: blur(2px);
+  }
+  to {
+    filter: blur(0);
+  }
+}
+
+@media (max-width: 1100px) {
+  .game-grid,
+  .hero,
+  .choices-grid,
+  .ethics-grid,
+  .intro-grid,
+  .outcome-layout,
+  .ending-panels {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    padding: 14px;
+  }
+
+  .topbar,
+  .panel-heading,
+  .topbar-meta,
+  .button-row {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .panel {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .topbar h1 {
+    font-size: 2.8rem;
+  }
+
+  .panel-heading h2 {
+    font-size: 2.2rem;
+  }
+
+  .ending-stats {
+    grid-template-columns: 1fr;
+  }
+}
